@@ -145,6 +145,15 @@ let isDark = false;
 // Initialize
 window.onload = () => {
     loadSettings();
+    
+    // Restore Language State
+    const savedLang = localStorage.getItem('ebc_lang');
+    if (savedLang) {
+        currentLang = savedLang;
+        document.getElementById('langSwitch').value = savedLang;
+    } else {
+        currentLang = document.getElementById('langSwitch').value;
+    }
     updateLanguage();
     
     // Check system preference or saved theme
@@ -174,6 +183,7 @@ document.getElementById('themeToggle').addEventListener('click', () => {
 
 document.getElementById('langSwitch').addEventListener('change', function(e) {
     currentLang = e.target.value;
+    localStorage.setItem('ebc_lang', currentLang);
     updateLanguage();
     reRenderIfCalculated();
 });
