@@ -5,14 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Electricity Bill Calculator</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         body {
-            background: linear-gradient(135deg, #f6f8fd 0%, #f1f6fd 100%);
             min-height: 100vh;
         }
         .glass-card {
-            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             box-shadow: 0 20px 40px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.05);
         }
@@ -25,10 +28,13 @@
         }
     </style>
 </head>
-<body class="flex items-center justify-center p-4 font-sans text-gray-800">
+<body class="flex items-center justify-center p-4 font-sans text-gray-800 dark:text-gray-200 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
 
-    <div class="absolute top-4 right-4 z-50">
-        <select id="langSwitch" class="bg-white border-2 border-blue-100 text-blue-800 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 shadow-sm cursor-pointer font-semibold outline-none transition-all hover:border-blue-300">
+    <div class="absolute top-4 right-4 z-50 flex gap-2">
+        <button id="themeToggle" class="bg-white border-2 border-blue-100 text-blue-800 rounded-xl p-2.5 shadow-sm cursor-pointer font-semibold outline-none transition-all hover:border-blue-300 w-11 h-11 flex items-center justify-center dark:bg-gray-800 dark:border-gray-600 dark:text-yellow-400">
+            <i class="fas fa-moon" id="themeIcon"></i>
+        </button>
+        <select id="langSwitch" class="bg-white border-2 border-blue-100 text-blue-800 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 shadow-sm cursor-pointer font-semibold outline-none transition-all hover:border-blue-300 dark:bg-gray-800 dark:border-gray-600 dark:text-white">
             <option value="en">🇺🇸 English</option>
             <option value="es">🇪🇸 Español</option>
             <option value="fr">🇫🇷 Français</option>
@@ -37,28 +43,28 @@
         </select>
     </div>
 
-    <div class="glass-card rounded-3xl w-full max-w-md overflow-hidden relative mt-8">
+    <div class="glass-card bg-white/95 dark:bg-gray-800/95 border dark:border-gray-700 rounded-3xl w-full max-w-md overflow-hidden relative mt-8">
         <!-- Header -->
-        <div class="bg-blue-600 p-8 text-white text-center relative overflow-hidden">
-            <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-blue-500 rounded-full opacity-50"></div>
-            <div class="absolute bottom-0 left-0 -mb-4 -ml-4 w-16 h-16 bg-blue-700 rounded-full opacity-50"></div>
+        <div class="bg-blue-600 dark:bg-blue-800 p-8 text-white text-center relative overflow-hidden">
+            <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-blue-500 dark:bg-blue-700 rounded-full opacity-50"></div>
+            <div class="absolute bottom-0 left-0 -mb-4 -ml-4 w-16 h-16 bg-blue-700 dark:bg-blue-900 rounded-full opacity-50"></div>
             
             <i class="fas fa-bolt text-4xl mb-3 text-yellow-300 animate-pulse"></i>
             <h1 id="appTitle" class="text-2xl font-bold mb-1 tracking-tight">Smart Bill Calculator</h1>
-            <p id="appSubtitle" class="text-blue-100 text-sm opacity-90">Calculate your electricity costs instantly</p>
+            <p id="appSubtitle" class="text-blue-100 dark:text-blue-200 text-sm opacity-90">Calculate your electricity costs instantly</p>
         </div>
 
         <!-- Personalization Settings -->
-        <div class="bg-gray-50 border-b border-gray-100">
-            <button type="button" onclick="toggleSettings()" class="w-full flex items-center justify-between p-4 text-sm font-bold text-gray-600 hover:text-blue-600 hover:bg-gray-100 transition-colors">
+        <div class="bg-gray-50 dark:bg-gray-800/50 border-b border-gray-100 dark:border-gray-700">
+            <button type="button" onclick="toggleSettings()" class="w-full flex items-center justify-between p-4 text-sm font-bold text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                 <span class="flex items-center gap-2"><i class="fas fa-sliders-h"></i> <span id="personalizeBtn">Personalize Rates & Settings</span></span>
                 <i id="settingsIcon" class="fas fa-chevron-down transition-transform"></i>
             </button>
-            <div id="settingsPanel" class="hidden p-6 pt-2 border-t border-gray-200">
+            <div id="settingsPanel" class="hidden p-6 pt-2 border-t border-gray-200 dark:border-gray-700">
                 <div class="grid grid-cols-2 gap-4 mb-4">
                     <div>
-                        <label id="lblCurrency" class="block text-xs font-bold text-gray-500 mb-1">Currency</label>
-                        <select id="setCurrency" class="w-full p-2 border border-gray-200 rounded-lg text-sm bg-white focus:ring-blue-500 focus:border-blue-500">
+                        <label id="lblCurrency" class="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1">Currency</label>
+                        <select id="setCurrency" class="w-full p-2 border border-gray-200 dark:border-gray-600 rounded-lg text-sm bg-white dark:bg-gray-700 dark:text-white focus:ring-blue-500 focus:border-blue-500">
                             <option value="$">$ (USD)</option>
                             <option value="€">€ (EUR)</option>
                             <option value="£">£ (GBP)</option>
@@ -67,37 +73,37 @@
                         </select>
                     </div>
                     <div>
-                        <label id="lblFixed" class="block text-xs font-bold text-gray-500 mb-1">Fixed Monthly Fee</label>
-                        <input type="number" id="setFixed" value="0" min="0" step="0.1" class="w-full p-2 border border-gray-200 rounded-lg text-sm bg-white focus:ring-blue-500 focus:border-blue-500">
+                        <label id="lblFixed" class="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1">Fixed Monthly Fee</label>
+                        <input type="number" id="setFixed" value="0" min="0" step="0.1" class="w-full p-2 border border-gray-200 dark:border-gray-600 rounded-lg text-sm bg-white dark:bg-gray-700 dark:text-white focus:ring-blue-500">
                     </div>
                 </div>
                 <div class="mb-4">
-                    <label id="lblTax" class="block text-xs font-bold text-gray-500 mb-1">Tax Percentage (%)</label>
-                    <input type="number" id="setTax" value="0" min="0" max="100" step="0.1" class="w-full p-2 border border-gray-200 rounded-lg text-sm bg-white focus:ring-blue-500 focus:border-blue-500">
+                    <label id="lblTax" class="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1">Tax Percentage (%)</label>
+                    <input type="number" id="setTax" value="0" min="0" max="100" step="0.1" class="w-full p-2 border border-gray-200 dark:border-gray-600 rounded-lg text-sm bg-white dark:bg-gray-700 dark:text-white focus:ring-blue-500">
                 </div>
                 
-                <h4 id="lblTierRates" class="text-xs font-bold text-gray-500 mb-2 uppercase border-b pb-1">Custom Tier Rates (per kWh)</h4>
+                <h4 id="lblTierRates" class="text-xs font-bold text-gray-500 dark:text-gray-400 mb-2 uppercase border-b dark:border-gray-700 pb-1">Custom Tier Rates (per kWh)</h4>
                 <div class="grid grid-cols-2 gap-3">
                     <div>
-                        <label id="lblT1" class="block text-xs text-gray-400">0 - 50 kWh</label>
-                        <input type="number" id="setT1" value="3.50" step="0.01" class="w-full p-1.5 border border-gray-200 rounded-md text-sm">
+                        <label id="lblT1" class="block text-xs text-gray-400 dark:text-gray-500">0 - 50 kWh</label>
+                        <input type="number" id="setT1" value="3.50" step="0.01" class="w-full p-1.5 border border-gray-200 dark:border-gray-600 rounded-md text-sm dark:bg-gray-700 dark:text-white">
                     </div>
                     <div>
-                        <label id="lblT2" class="block text-xs text-gray-400">51 - 150 kWh</label>
-                        <input type="number" id="setT2" value="4.00" step="0.01" class="w-full p-1.5 border border-gray-200 rounded-md text-sm">
+                        <label id="lblT2" class="block text-xs text-gray-400 dark:text-gray-500">51 - 150 kWh</label>
+                        <input type="number" id="setT2" value="4.00" step="0.01" class="w-full p-1.5 border border-gray-200 dark:border-gray-600 rounded-md text-sm dark:bg-gray-700 dark:text-white">
                     </div>
                     <div>
-                        <label id="lblT3" class="block text-xs text-gray-400">151 - 250 kWh</label>
-                        <input type="number" id="setT3" value="5.20" step="0.01" class="w-full p-1.5 border border-gray-200 rounded-md text-sm">
+                        <label id="lblT3" class="block text-xs text-gray-400 dark:text-gray-500">151 - 250 kWh</label>
+                        <input type="number" id="setT3" value="5.20" step="0.01" class="w-full p-1.5 border border-gray-200 dark:border-gray-600 rounded-md text-sm dark:bg-gray-700 dark:text-white">
                     </div>
                     <div>
-                        <label id="lblT4" class="block text-xs text-gray-400">251+ kWh</label>
-                        <input type="number" id="setT4" value="6.50" step="0.01" class="w-full p-1.5 border border-gray-200 rounded-md text-sm">
+                        <label id="lblT4" class="block text-xs text-gray-400 dark:text-gray-500">251+ kWh</label>
+                        <input type="number" id="setT4" value="6.50" step="0.01" class="w-full p-1.5 border border-gray-200 dark:border-gray-600 rounded-md text-sm dark:bg-gray-700 dark:text-white">
                     </div>
                 </div>
                 <div class="mt-4 flex justify-end gap-2">
-                    <button type="button" onclick="resetSettings()" id="btnResetSettings" class="text-xs text-gray-500 hover:text-gray-800 font-semibold px-3 py-1.5">Reset Defaults</button>
-                    <button type="button" onclick="saveSettings()" id="btnSaveSettings" class="bg-blue-100 text-blue-700 hover:bg-blue-200 font-bold px-4 py-1.5 rounded-lg text-xs transition-colors">Save Preferences</button>
+                    <button type="button" onclick="resetSettings()" id="btnResetSettings" class="text-xs text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-white font-semibold px-3 py-1.5">Reset Defaults</button>
+                    <button type="button" onclick="saveSettings()" id="btnSaveSettings" class="bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-900 font-bold px-4 py-1.5 rounded-lg text-xs transition-colors">Save Preferences</button>
                 </div>
             </div>
         </div>
@@ -106,13 +112,13 @@
         <div class="p-8">
             <form id="calcForm" onsubmit="calculateBill(event)">
                 <div class="mb-6 relative">
-                    <label id="usageLabel" for="units" class="block text-sm font-semibold text-gray-600 mb-2 uppercase tracking-wide">Electricity Usage</label>
+                    <label id="usageLabel" for="units" class="block text-sm font-semibold text-gray-600 dark:text-gray-300 mb-2 uppercase tracking-wide">Electricity Usage</label>
                     <div class="relative group">
                         <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                             <i class="fas fa-tachometer-alt text-gray-400 group-focus-within:text-blue-500 transition-colors"></i>
                         </div>
                         <input type="number" step="0.1" name="units" id="units" required min="0"
-                               class="block w-full pl-11 pr-16 py-4 border-2 border-gray-100 rounded-2xl focus:ring-0 focus:border-blue-500 transition-all text-lg font-medium text-gray-700 bg-gray-50 focus:bg-white shadow-inner" 
+                               class="block w-full pl-11 pr-16 py-4 border-2 border-gray-100 dark:border-gray-600 rounded-2xl focus:ring-0 focus:border-blue-500 transition-all text-lg font-medium text-gray-700 dark:text-white bg-gray-50 dark:bg-gray-700 focus:bg-white dark:focus:bg-gray-600 shadow-inner" 
                                placeholder="0.0">
                         <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
                             <span class="text-gray-400 font-semibold group-focus-within:text-blue-500 transition-colors">kWh</span>
@@ -125,25 +131,25 @@
                     <i class="fas fa-calculator"></i> <span>Calculate Bill</span>
                 </button>
                 
-                <button type="button" id="resetBtn" onclick="resetForm()" class="hidden w-full mt-3 bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold py-3 px-6 rounded-2xl transition-all flex justify-center items-center gap-2">
+                <button type="button" id="resetBtn" onclick="resetForm()" class="hidden w-full mt-3 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-300 font-bold py-3 px-6 rounded-2xl transition-all flex justify-center items-center gap-2">
                     <i class="fas fa-redo"></i> <span>Calculate Another</span>
                 </button>
             </form>
 
             <!-- Result -->
-            <div id="resultBox" class="mt-8 bg-green-50 rounded-2xl p-6 border border-green-100 animate-fade-in hidden">
+            <div id="resultBox" class="mt-8 bg-green-50 dark:bg-green-900/20 rounded-2xl p-6 border border-green-100 dark:border-green-800/50 animate-fade-in hidden">
                 <div class="flex items-center justify-between mb-2">
-                    <span id="totalLabel" class="text-green-800 font-semibold text-sm uppercase tracking-wide">Total Amount Due</span>
+                    <span id="totalLabel" class="text-green-800 dark:text-green-400 font-semibold text-sm uppercase tracking-wide">Total Amount Due</span>
                     <i class="fas fa-check-circle text-green-500 text-xl"></i>
                 </div>
-                <div class="text-4xl font-black text-green-600">
+                <div class="text-4xl font-black text-green-600 dark:text-green-400">
                     <span id="currencySymbol" class="text-2xl">$</span><span id="totalAmount">0.00</span>
                 </div>
-                <p id="basedOnLabel" class="text-green-700 text-sm mt-2 opacity-80">Based on <span id="basedOnUnits" class="font-bold"></span> kWh usage</p>
+                <p id="basedOnLabel" class="text-green-700 dark:text-green-500 text-sm mt-2 opacity-80">Based on <span id="basedOnUnits" class="font-bold"></span> kWh usage</p>
 
-                <div class="mt-4 pt-4 border-t border-green-200/50">
-                    <p id="breakdownLabel" class="text-xs text-green-800 font-semibold uppercase mb-2">Tier Breakdown</p>
-                    <ul id="breakdownList" class="text-sm text-green-700 space-y-2 opacity-90">
+                <div class="mt-4 pt-4 border-t border-green-200/50 dark:border-green-800/50">
+                    <p id="breakdownLabel" class="text-xs text-green-800 dark:text-green-500 font-semibold uppercase mb-2">Tier Breakdown</p>
+                    <ul id="breakdownList" class="text-sm text-green-700 dark:text-green-400 space-y-2 opacity-90">
                         <!-- Filled by JS -->
                     </ul>
                 </div>

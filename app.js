@@ -139,14 +139,51 @@ let config = {
     t4: 6.50
 };
 
+// Theme State
+let isDark = false;
+
 // Initialize
 window.onload = () => {
     loadSettings();
+    
+    // Restore Language State
+    const savedLang = localStorage.getItem('ebc_lang');
+    if (savedLang) {
+        currentLang = savedLang;
+        document.getElementById('langSwitch').value = savedLang;
+    } else {
+        currentLang = document.getElementById('langSwitch').value;
+    }
     updateLanguage();
+    
+    // Check system preference or saved theme
+    const savedTheme = localStorage.getItem('ebc_theme');
+    if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        isDark = true;
+        document.documentElement.classList.add('dark');
+        document.getElementById('themeIcon').classList.replace('fa-moon', 'fa-sun');
+    }
 };
+
+document.getElementById('themeToggle').addEventListener('click', () => {
+    isDark = !isDark;
+    const html = document.documentElement;
+    const icon = document.getElementById('themeIcon');
+    
+    if (isDark) {
+        html.classList.add('dark');
+        icon.classList.replace('fa-moon', 'fa-sun');
+        localStorage.setItem('ebc_theme', 'dark');
+    } else {
+        html.classList.remove('dark');
+        icon.classList.replace('fa-sun', 'fa-moon');
+        localStorage.setItem('ebc_theme', 'light');
+    }
+});
 
 document.getElementById('langSwitch').addEventListener('change', function(e) {
     currentLang = e.target.value;
+    localStorage.setItem('ebc_lang', currentLang);
     updateLanguage();
     reRenderIfCalculated();
 });
