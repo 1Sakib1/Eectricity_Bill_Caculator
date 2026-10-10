@@ -143,17 +143,21 @@ let config = {
 let isDark = false;
 
 // Initialize
-window.onload = () => {
-    loadSettings();
-    
-    // Restore Language State
+window.onload = async () => {
+    const savedConfig = localStorage.getItem('ebc_config');
     const savedLang = localStorage.getItem('ebc_lang');
-    if (savedLang) {
-        currentLang = savedLang;
-        document.getElementById('langSwitch').value = savedLang;
+    
+    if (!savedConfig && !savedLang) {
+        // First visit: Auto-detect location using free GeoJS API
+        await autoDetectLocation();
     } else {
-        currentLang = document.getElementById('langSwitch').value;
+        if (savedLang) {
+            currentLang = savedLang;
+            document.getElementById('langSwitch').value = savedLang;
+        }
     }
+    
+    loadSettings();
     updateLanguage();
     
     // Check system preference or saved theme
@@ -164,6 +168,55 @@ window.onload = () => {
         document.getElementById('themeIcon').classList.replace('fa-moon', 'fa-sun');
     }
 };
+
+async function autoDetectLocation() {
+    try {
+        const response = await fetch('https://get.geojs.io/v1/ip/geo.json');
+        const data = await response.json();
+        
+        // Map country codes to our supported currencies and languages
+        const countryMap = {
+            'AU': { curr: 'A$', lang: 'en', t1: 0.28, t2: 0.32, t3: 0.35, t4: 0.40, fixed: 1.10 }, // Australia (avg rates)
+            'US': { curr: '$', lang: 'en', t1: 0.12, t2: 0.15, t3: 0.20, t4: 0.25, fixed: 10 },
+            'GB': { curr: '£', lang: 'en', t1: 0.25, t2: 0.28, t3: 0.32, t4: 0.35, fixed: 5 },
+            'IN': { curr: '₹', lang: 'hi', t1: 3.50, t2: 4.00, t3: 5.20, t4: 6.50, fixed: 50 },
+            'BD': { curr: '৳', lang: 'bn', t1: 4.50, t2: 5.80, t3: 7.20, t4: 8.50, fixed: 30 },
+            'FR': { curr: '€', lang: 'fr', t1: 0.20, t2: 0.22, t3: 0.25, t4: 0.28, fixed: 12 },
+            'ES': { curr: '€', lang: 'es', t1: 0.15, t2: 0.18, t3: 0.22, t4: 0.25, fixed: 10 }
+        };
+
+        const mapping = countryMap[data.country_code];
+        if (mapping) {
+            currentLang = mapping.lang;
+            document.getElementById('langSwitch').value = mapping.lang;
+            
+            // Auto-configure realistic rates for their country
+            config.currency = mapping.curr;
+            config.t1 = mapping.t1;
+            config.t2 = mapping.t2;
+            config.t3 = mapping.t3;
+            config.t4 = mapping.t4;
+            config.fixedFee = mapping.fixed;
+            
+            // Save it so it feels instant next time
+            localStorage.setItem('ebc_lang', currentLang);
+            localStorage.setItem('ebc_config', JSON.stringify(config));
+            
+            // Add a little visual notification
+            const errorMsg = document.getElementById('errorMsg');
+            errorMsg.classList.remove('hidden', 'text-red-500');
+            errorMsg.classList.add('text-blue-500');
+            errorMsg.innerHTML = `<i class="fas fa-magic"></i> <span>Auto-configured for ${data.country}!</span>`;
+            setTimeout(() => {
+                errorMsg.classList.add('hidden');
+                errorMsg.classList.remove('text-blue-500');
+                errorMsg.classList.add('text-red-500');
+            }, 4000);
+        }
+    } catch (e) {
+        console.log("Auto-detect failed:", e);
+    }
+}
 
 document.getElementById('themeToggle').addEventListener('click', () => {
     isDark = !isDark;
