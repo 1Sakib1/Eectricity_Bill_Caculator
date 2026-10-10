@@ -48,6 +48,60 @@
             <p id="appSubtitle" class="text-blue-100 text-sm opacity-90">Calculate your electricity costs instantly</p>
         </div>
 
+        <!-- Personalization Settings -->
+        <div class="bg-gray-50 border-b border-gray-100">
+            <button type="button" onclick="toggleSettings()" class="w-full flex items-center justify-between p-4 text-sm font-bold text-gray-600 hover:text-blue-600 hover:bg-gray-100 transition-colors">
+                <span class="flex items-center gap-2"><i class="fas fa-sliders-h"></i> <span id="personalizeBtn">Personalize Rates & Settings</span></span>
+                <i id="settingsIcon" class="fas fa-chevron-down transition-transform"></i>
+            </button>
+            <div id="settingsPanel" class="hidden p-6 pt-2 border-t border-gray-200">
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label id="lblCurrency" class="block text-xs font-bold text-gray-500 mb-1">Currency</label>
+                        <select id="setCurrency" class="w-full p-2 border border-gray-200 rounded-lg text-sm bg-white focus:ring-blue-500 focus:border-blue-500">
+                            <option value="$">$ (USD)</option>
+                            <option value="€">€ (EUR)</option>
+                            <option value="£">£ (GBP)</option>
+                            <option value="₹">₹ (INR)</option>
+                            <option value="৳">৳ (BDT)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label id="lblFixed" class="block text-xs font-bold text-gray-500 mb-1">Fixed Monthly Fee</label>
+                        <input type="number" id="setFixed" value="0" min="0" step="0.1" class="w-full p-2 border border-gray-200 rounded-lg text-sm bg-white focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label id="lblTax" class="block text-xs font-bold text-gray-500 mb-1">Tax Percentage (%)</label>
+                    <input type="number" id="setTax" value="0" min="0" max="100" step="0.1" class="w-full p-2 border border-gray-200 rounded-lg text-sm bg-white focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                
+                <h4 id="lblTierRates" class="text-xs font-bold text-gray-500 mb-2 uppercase border-b pb-1">Custom Tier Rates (per kWh)</h4>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label id="lblT1" class="block text-xs text-gray-400">0 - 50 kWh</label>
+                        <input type="number" id="setT1" value="3.50" step="0.01" class="w-full p-1.5 border border-gray-200 rounded-md text-sm">
+                    </div>
+                    <div>
+                        <label id="lblT2" class="block text-xs text-gray-400">51 - 150 kWh</label>
+                        <input type="number" id="setT2" value="4.00" step="0.01" class="w-full p-1.5 border border-gray-200 rounded-md text-sm">
+                    </div>
+                    <div>
+                        <label id="lblT3" class="block text-xs text-gray-400">151 - 250 kWh</label>
+                        <input type="number" id="setT3" value="5.20" step="0.01" class="w-full p-1.5 border border-gray-200 rounded-md text-sm">
+                    </div>
+                    <div>
+                        <label id="lblT4" class="block text-xs text-gray-400">251+ kWh</label>
+                        <input type="number" id="setT4" value="6.50" step="0.01" class="w-full p-1.5 border border-gray-200 rounded-md text-sm">
+                    </div>
+                </div>
+                <div class="mt-4 flex justify-end gap-2">
+                    <button type="button" onclick="resetSettings()" id="btnResetSettings" class="text-xs text-gray-500 hover:text-gray-800 font-semibold px-3 py-1.5">Reset Defaults</button>
+                    <button type="button" onclick="saveSettings()" id="btnSaveSettings" class="bg-blue-100 text-blue-700 hover:bg-blue-200 font-bold px-4 py-1.5 rounded-lg text-xs transition-colors">Save Preferences</button>
+                </div>
+            </div>
+        </div>
+
         <!-- Form Content -->
         <div class="p-8">
             <form id="calcForm" onsubmit="calculateBill(event)">
@@ -83,7 +137,7 @@
                     <i class="fas fa-check-circle text-green-500 text-xl"></i>
                 </div>
                 <div class="text-4xl font-black text-green-600">
-                    <span class="text-2xl">$</span><span id="totalAmount">0.00</span>
+                    <span id="currencySymbol" class="text-2xl">$</span><span id="totalAmount">0.00</span>
                 </div>
                 <p id="basedOnLabel" class="text-green-700 text-sm mt-2 opacity-80">Based on <span id="basedOnUnits" class="font-bold"></span> kWh usage</p>
 

@@ -8,85 +8,147 @@ const i18n = {
         total: "Total Amount Due",
         basedOn: "Based on {units} kWh usage",
         breakdown: "Tier Breakdown",
-        tier1: "First 50 units (x $3.50)",
-        tier2: "Next 100 units (x $4.00)",
-        tier3: "Next 100 units (x $5.20)",
-        tier4: "Above 250 units (x $6.50)",
-        error: "Please enter a valid positive number."
+        tier1: "First 50 units",
+        tier2: "Next 100 units",
+        tier3: "Next 100 units",
+        tier4: "Above 250 units",
+        fixedFee: "Fixed Monthly Fee",
+        tax: "Tax",
+        error: "Please enter a valid positive number.",
+        personalize: "Personalize Rates & Settings",
+        lblCurrency: "Currency",
+        lblFixed: "Fixed Monthly Fee",
+        lblTax: "Tax Percentage (%)",
+        lblTierRates: "Custom Tier Rates (per kWh)",
+        btnResetSettings: "Reset Defaults",
+        btnSaveSettings: "Save Preferences",
+        settingsSaved: "Preferences Saved!"
     },
     es: {
         title: "Calculadora de Factura",
-        subtitle: "Calcula tus costos de electricidad al instante",
-        usage: "Consumo de Electricidad",
+        subtitle: "Calcula tus costos al instante",
+        usage: "Consumo Eléctrico",
         calcBtn: "Calcular Factura",
         resetBtn: "Calcular Otra",
         total: "Monto Total a Pagar",
-        basedOn: "Basado en {units} kWh de consumo",
-        breakdown: "Desglose por Niveles",
-        tier1: "Primeros 50 kWh (x $3.50)",
-        tier2: "Siguientes 100 kWh (x $4.00)",
-        tier3: "Siguientes 100 kWh (x $5.20)",
-        tier4: "Más de 250 kWh (x $6.50)",
-        error: "Por favor ingrese un número positivo válido."
+        basedOn: "Basado en {units} kWh",
+        breakdown: "Desglose",
+        tier1: "Primeros 50 kWh",
+        tier2: "Sig. 100 kWh",
+        tier3: "Sig. 100 kWh",
+        tier4: "Más de 250 kWh",
+        fixedFee: "Cargo Fijo",
+        tax: "Impuesto",
+        error: "Número positivo válido.",
+        personalize: "Personalizar Tarifas",
+        lblCurrency: "Moneda",
+        lblFixed: "Cargo Fijo Mensual",
+        lblTax: "Impuesto (%)",
+        lblTierRates: "Tarifas por Nivel",
+        btnResetSettings: "Restablecer",
+        btnSaveSettings: "Guardar",
+        settingsSaved: "¡Guardado!"
     },
     fr: {
         title: "Calculateur de Facture",
-        subtitle: "Calculez vos coûts d'électricité instantanément",
-        usage: "Consommation d'Électricité",
-        calcBtn: "Calculer la Facture",
-        resetBtn: "Calculer une Autre",
-        total: "Montant Total Dû",
-        basedOn: "Basé sur {units} kWh de consommation",
-        breakdown: "Détail par Paliers",
-        tier1: "50 premiers kWh (x 3,50 $)",
-        tier2: "100 kWh suivants (x 4,00 $)",
-        tier3: "100 kWh suivants (x 5,20 $)",
-        tier4: "Au-dessus de 250 kWh (x 6,50 $)",
-        error: "Veuillez entrer un nombre positif valide."
+        subtitle: "Calculez vos coûts instantanément",
+        usage: "Consommation (kWh)",
+        calcBtn: "Calculer",
+        resetBtn: "Nouveau Calcul",
+        total: "Montant Total",
+        basedOn: "Basé sur {units} kWh",
+        breakdown: "Détail",
+        tier1: "50 premiers kWh",
+        tier2: "100 kWh suivants",
+        tier3: "100 kWh suivants",
+        tier4: "Plus de 250 kWh",
+        fixedFee: "Frais Fixes",
+        tax: "Taxe",
+        error: "Nombre positif requis.",
+        personalize: "Personnaliser les Tarifs",
+        lblCurrency: "Devise",
+        lblFixed: "Frais Fixes Mensuels",
+        lblTax: "Taxe (%)",
+        lblTierRates: "Tarifs par Palier",
+        btnResetSettings: "Réinitialiser",
+        btnSaveSettings: "Enregistrer",
+        settingsSaved: "Enregistré!"
     },
     bn: {
-        title: "স্মার্ট বিদ্যুৎ বিল ক্যালকুলেটর",
-        subtitle: "আপনার বিদ্যুৎ খরচ সাথে সাথে হিসাব করুন",
-        usage: "বিদ্যুৎ ব্যবহার",
-        calcBtn: "বিল হিসাব করুন",
+        title: "স্মার্ট বিল ক্যালকুলেটর",
+        subtitle: "আপনার বিদ্যুৎ খরচ হিসাব করুন",
+        usage: "বিদ্যুৎ ব্যবহার (kWh)",
+        calcBtn: "হিসাব করুন",
         resetBtn: "আবার হিসাব করুন",
-        total: "মোট প্রদেয় পরিমাণ",
-        basedOn: "{units} kWh ব্যবহারের উপর ভিত্তি করে",
+        total: "মোট প্রদেয়",
+        basedOn: "{units} kWh এর উপর ভিত্তি করে",
         breakdown: "ধাপভিত্তিক খরচ",
-        tier1: "প্রথম ৫০ ইউনিট (x $৩.৫০)",
-        tier2: "পরবর্তী ১০০ ইউনিট (x $৪.০০)",
-        tier3: "পরবর্তী ১০০ ইউনিট (x $৫.২০)",
-        tier4: "২৫০ ইউনিটের উপরে (x $৬.৫০)",
-        error: "অনুগ্রহ করে একটি সঠিক ধনাত্মক সংখ্যা লিখুন।"
+        tier1: "প্রথম ৫০ ইউনিট",
+        tier2: "পরবর্তী ১০০ ইউনিট",
+        tier3: "পরবর্তী ১০০ ইউনিট",
+        tier4: "২৫০ ইউনিটের উপরে",
+        fixedFee: "মাসিক ফিক্সড চার্জ",
+        tax: "ট্যাক্স",
+        error: "সঠিক সংখ্যা লিখুন।",
+        personalize: "রেট ও সেটিংস পরিবর্তন",
+        lblCurrency: "মুদ্রা",
+        lblFixed: "মাসিক ফিক্সড চার্জ",
+        lblTax: "ট্যাক্স (%)",
+        lblTierRates: "কাস্টম রেট (প্রতি kWh)",
+        btnResetSettings: "রিসেট করুন",
+        btnSaveSettings: "সেভ করুন",
+        settingsSaved: "সেভ হয়েছে!"
     },
     hi: {
         title: "स्मार्ट बिल कैलकुलेटर",
-        subtitle: "अपनी बिजली लागत की तुरंत गणना करें",
+        subtitle: "अपनी बिजली लागत की गणना करें",
         usage: "बिजली का उपयोग",
-        calcBtn: "बिल की गणना करें",
-        resetBtn: "दूसरी गणना करें",
-        total: "कुल देय राशि",
-        basedOn: "{units} kWh उपयोग के आधार पर",
+        calcBtn: "गणना करें",
+        resetBtn: "दूसरी गणना",
+        total: "कुल राशि",
+        basedOn: "{units} kWh के आधार पर",
         breakdown: "टियर ब्रेकडाउन",
-        tier1: "पहले 50 यूनिट (x $3.50)",
-        tier2: "अगले 100 यूनिट (x $4.00)",
-        tier3: "अगले 100 यूनिट (x $5.20)",
-        tier4: "250 यूनिट से ऊपर (x $6.50)",
-        error: "कृपया एक वैध धनात्मक संख्या दर्ज करें।"
+        tier1: "पहले 50 यूनिट",
+        tier2: "अगले 100 यूनिट",
+        tier3: "अगले 100 यूनिट",
+        tier4: "250 यूनिट से ऊपर",
+        fixedFee: "निश्चित शुल्क",
+        tax: "कर (Tax)",
+        error: "एक वैध संख्या दर्ज करें।",
+        personalize: "दरें और सेटिंग्स अनुकूलित करें",
+        lblCurrency: "मुद्रा",
+        lblFixed: "निश्चित मासिक शुल्क",
+        lblTax: "कर (%)",
+        lblTierRates: "कस्टम टियर दरें",
+        btnResetSettings: "डिफ़ॉल्ट रीसेट करें",
+        btnSaveSettings: "सेव करें",
+        settingsSaved: "सेव हो गया!"
     }
 };
 
 let currentLang = 'en';
 
+// Settings state
+let config = {
+    currency: '$',
+    fixedFee: 0,
+    tax: 0,
+    t1: 3.50,
+    t2: 4.00,
+    t3: 5.20,
+    t4: 6.50
+};
+
+// Initialize
+window.onload = () => {
+    loadSettings();
+    updateLanguage();
+};
+
 document.getElementById('langSwitch').addEventListener('change', function(e) {
     currentLang = e.target.value;
     updateLanguage();
-    
-    // Re-render breakdown if result is visible
-    const units = document.getElementById('units').value;
-    if (units && !document.getElementById('resultBox').classList.contains('hidden')) {
-        renderBreakdown(parseFloat(units));
-    }
+    reRenderIfCalculated();
 });
 
 function updateLanguage() {
@@ -99,6 +161,81 @@ function updateLanguage() {
     document.getElementById('totalLabel').innerText = t.total;
     document.getElementById('breakdownLabel').innerText = t.breakdown;
     document.querySelector('#errorMsg span').innerText = t.error;
+    
+    document.getElementById('personalizeBtn').innerText = t.personalize;
+    document.getElementById('lblCurrency').innerText = t.lblCurrency;
+    document.getElementById('lblFixed').innerText = t.lblFixed;
+    document.getElementById('lblTax').innerText = t.lblTax;
+    document.getElementById('lblTierRates').innerText = t.lblTierRates;
+    document.getElementById('btnResetSettings').innerText = t.btnResetSettings;
+    if(document.getElementById('btnSaveSettings').innerText !== t.settingsSaved) {
+        document.getElementById('btnSaveSettings').innerText = t.btnSaveSettings;
+    }
+}
+
+function toggleSettings() {
+    const panel = document.getElementById('settingsPanel');
+    const icon = document.getElementById('settingsIcon');
+    if (panel.classList.contains('hidden')) {
+        panel.classList.remove('hidden');
+        icon.style.transform = "rotate(180deg)";
+    } else {
+        panel.classList.add('hidden');
+        icon.style.transform = "rotate(0deg)";
+    }
+}
+
+function loadSettings() {
+    const saved = localStorage.getItem('ebc_config');
+    if (saved) {
+        config = { ...config, ...JSON.parse(saved) };
+    }
+    document.getElementById('setCurrency').value = config.currency;
+    document.getElementById('setFixed').value = config.fixedFee;
+    document.getElementById('setTax').value = config.tax;
+    document.getElementById('setT1').value = config.t1;
+    document.getElementById('setT2').value = config.t2;
+    document.getElementById('setT3').value = config.t3;
+    document.getElementById('setT4').value = config.t4;
+    document.getElementById('currencySymbol').innerText = config.currency;
+}
+
+function saveSettings() {
+    config.currency = document.getElementById('setCurrency').value;
+    config.fixedFee = parseFloat(document.getElementById('setFixed').value) || 0;
+    config.tax = parseFloat(document.getElementById('setTax').value) || 0;
+    config.t1 = parseFloat(document.getElementById('setT1').value) || 0;
+    config.t2 = parseFloat(document.getElementById('setT2').value) || 0;
+    config.t3 = parseFloat(document.getElementById('setT3').value) || 0;
+    config.t4 = parseFloat(document.getElementById('setT4').value) || 0;
+    
+    localStorage.setItem('ebc_config', JSON.stringify(config));
+    document.getElementById('currencySymbol').innerText = config.currency;
+    
+    const btn = document.getElementById('btnSaveSettings');
+    const ogText = btn.innerText;
+    btn.innerText = i18n[currentLang].settingsSaved;
+    btn.classList.add('bg-green-100', 'text-green-700');
+    setTimeout(() => {
+        btn.innerText = i18n[currentLang].btnSaveSettings;
+        btn.classList.remove('bg-green-100', 'text-green-700');
+    }, 2000);
+    
+    reRenderIfCalculated();
+}
+
+function resetSettings() {
+    localStorage.removeItem('ebc_config');
+    config = { currency: '$', fixedFee: 0, tax: 0, t1: 3.50, t2: 4.00, t3: 5.20, t4: 6.50 };
+    loadSettings();
+    reRenderIfCalculated();
+}
+
+function reRenderIfCalculated() {
+    const units = document.getElementById('units').value;
+    if (units && !document.getElementById('resultBox').classList.contains('hidden')) {
+        renderBreakdown(parseFloat(units));
+    }
 }
 
 function calculateBill(e) {
@@ -117,29 +254,12 @@ function calculateBill(e) {
     document.getElementById('resetBtn').classList.remove('hidden');
     document.getElementById('units').disabled = true;
 
-    // Calculate total
-    let total = 0;
-    let remaining = units;
-
-    if (remaining <= 50) {
-        total = remaining * 3.50;
-    } else if (remaining <= 150) {
-        total = (50 * 3.50) + ((remaining - 50) * 4.00);
-    } else if (remaining <= 250) {
-        total = (50 * 3.50) + (100 * 4.00) + ((remaining - 150) * 5.20);
-    } else {
-        total = (50 * 3.50) + (100 * 4.00) + (100 * 5.20) + ((remaining - 250) * 6.50);
-    }
-
-    document.getElementById('totalAmount').innerText = total.toFixed(2);
-    
     renderBreakdown(units);
     
     const resultBox = document.getElementById('resultBox');
     resultBox.classList.remove('hidden');
-    // Re-trigger animation
     resultBox.classList.remove('animate-fade-in');
-    void resultBox.offsetWidth;
+    void resultBox.offsetWidth; // trigger reflow
     resultBox.classList.add('animate-fade-in');
 }
 
@@ -151,23 +271,48 @@ function renderBreakdown(units) {
     
     const list = document.getElementById('breakdownList');
     list.innerHTML = '';
+    
+    let subtotal = 0;
+    const c = config.currency;
 
     if (units > 0) {
-        const amt = Math.min(50, units) * 3.50;
-        list.innerHTML += `<li class="flex justify-between items-center border-b border-green-100/50 pb-1"><span>${t.tier1}</span> <span class="font-bold">$${amt.toFixed(2)}</span></li>`;
+        const u = Math.min(50, units);
+        const amt = u * config.t1;
+        subtotal += amt;
+        list.innerHTML += `<li class="flex justify-between items-center border-b border-green-100/50 pb-1"><span>${t.tier1} (x ${c}${config.t1})</span> <span class="font-bold">${c}${amt.toFixed(2)}</span></li>`;
     }
     if (units > 50) {
-        const amt = Math.min(100, units - 50) * 4.00;
-        list.innerHTML += `<li class="flex justify-between items-center border-b border-green-100/50 pb-1"><span>${t.tier2}</span> <span class="font-bold">$${amt.toFixed(2)}</span></li>`;
+        const u = Math.min(100, units - 50);
+        const amt = u * config.t2;
+        subtotal += amt;
+        list.innerHTML += `<li class="flex justify-between items-center border-b border-green-100/50 pb-1"><span>${t.tier2} (x ${c}${config.t2})</span> <span class="font-bold">${c}${amt.toFixed(2)}</span></li>`;
     }
     if (units > 150) {
-        const amt = Math.min(100, units - 150) * 5.20;
-        list.innerHTML += `<li class="flex justify-between items-center border-b border-green-100/50 pb-1"><span>${t.tier3}</span> <span class="font-bold">$${amt.toFixed(2)}</span></li>`;
+        const u = Math.min(100, units - 150);
+        const amt = u * config.t3;
+        subtotal += amt;
+        list.innerHTML += `<li class="flex justify-between items-center border-b border-green-100/50 pb-1"><span>${t.tier3} (x ${c}${config.t3})</span> <span class="font-bold">${c}${amt.toFixed(2)}</span></li>`;
     }
     if (units > 250) {
-        const amt = (units - 250) * 6.50;
-        list.innerHTML += `<li class="flex justify-between items-center border-b border-green-100/50 pb-1"><span>${t.tier4}</span> <span class="font-bold">$${amt.toFixed(2)}</span></li>`;
+        const u = (units - 250);
+        const amt = u * config.t4;
+        subtotal += amt;
+        list.innerHTML += `<li class="flex justify-between items-center border-b border-green-100/50 pb-1"><span>${t.tier4} (x ${c}${config.t4})</span> <span class="font-bold">${c}${amt.toFixed(2)}</span></li>`;
     }
+
+    if (config.fixedFee > 0) {
+        subtotal += config.fixedFee;
+        list.innerHTML += `<li class="flex justify-between items-center border-b border-green-100/50 pb-1 text-green-800"><span>${t.fixedFee}</span> <span class="font-bold">${c}${config.fixedFee.toFixed(2)}</span></li>`;
+    }
+
+    let finalTotal = subtotal;
+    if (config.tax > 0) {
+        const taxAmt = subtotal * (config.tax / 100);
+        finalTotal += taxAmt;
+        list.innerHTML += `<li class="flex justify-between items-center border-b border-green-100/50 pb-1 text-green-800"><span>${t.tax} (${config.tax}%)</span> <span class="font-bold">+${c}${taxAmt.toFixed(2)}</span></li>`;
+    }
+
+    document.getElementById('totalAmount').innerText = finalTotal.toFixed(2);
 }
 
 function resetForm() {
